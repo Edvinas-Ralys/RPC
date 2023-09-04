@@ -1,53 +1,82 @@
-//Computer chooses
-function computerPlay(){
+//Prompt to ask for player input. Allows only valid answers
+function playerInput(){
+    let playerSelect = prompt(`Choose - rock, paper or scissors`).toLowerCase();
+    if(playerSelect === `rock` || playerSelect === `paper` || playerSelect === `scissors`){
+        return playerSelect;
+    }
+    else if (playerSelect !== undefined) {
+        alert(`Wrong input`);
+        playerInput();
+    }
+    }
+
+//Computer choose what to play
+function computerInput(){
     let random = Math.random();
-    if(random <= 0.33333){
+    if(random <=0.3333){
+        return `paper`;
+    }
+    else if(random >=0.6666){
         return `rock`;
     }
-    else if (random >= 0.66666)
-        return `paper`;
-    else {
-        return `scissors` 
+    else{
+        return `scissors`;
     }
 }
+//Definig varianbles for game outcomes
+let playerScore = 0;
+let computerScore = 0;
+let drawCount = 0
+let draw = `It's a draw!`
+let playerWin = `Player won this round!`
+let computerWin = `Computer won the round!`
 
+//Plays a round of RPC
+function game(playerPlay, computerPlay){
+    playerPlay = playerInput();
+    console.log(`Player chose ` + playerPlay);
+    computerPlay = computerInput();
+    console.log(`Computer chose ` + computerPlay);
+  
+  if(playerPlay === computerPlay){
+    return draw;
+  }
+  else if (playerPlay === `rock` && computerPlay === `scissors`){
+    return playerWin;
+  }
+  else if (playerPlay === `paper` && computerPlay === `rock`){
+    return playerWin;
+}
+else if (playerPlay === `scissors` && computerPlay === `paper`){
+    return playerWin;
+}
+else{
+    return computerWin;
+}}
 
-//Playing one round
-function playRound (playerChoice, computerChoice){
-    if(playerChoice === computerChoice){
-        return draw;
+for(let i = 1; i < 6; i++){
+    console.log(`Round ` + i)
+    let round = game();
+    if(round === draw){
+        console.log(draw),
+        drawCount++
     }
-    else if (playerChoice === `rock` && computerChoice === `scissors`){
-        return playerWinRound;
-    }
-    else if (playerChoice === `paper` && computerChoice === `rock`){
-        return playerWinRound;
-    }
-    else if (playerChoice === `scissors` && computerChoice === `paper`){
-        return playerWinRound;
+    else if (round === playerWin) {
+        console.log(playerWin),
+        playerScore++
     }
     else{
-        return computerWinRound
+        console.log(computerWin),
+        computerScore++
     }
-
+    console.log(`Draws: ` + drawCount, `Player: ` + playerScore, `Computer; ` + computerScore);
 }
-
-let draw = `It's a draw!`;
-let playerWinRound = `Player won the round!`;
-let computerWinRound = `Computer won the round!`;
-let playerWin = `Player won the game!`;
-let computerWin = `Computer won the game!`;
-
-for (let i = 1; i < 1000; i++){
-    let playerChoice = prompt(`Choose - rock, paper or scissors`);
-    console.log(`Player chose ` + playerChoice);
-
-    const computerSelection = computerPlay();
-    console.log(`Computer chose ` + computerSelection);
-
-    let roundResult = playRound(playerChoice, computerSelection);
-    console.log(roundResult);
-    gameScore(roundResult);
-    console.log(`Your score is ` + pla)
+if(i = 6 && playerScore > computerScore){
+    console.log(`Player won the game, congratulations!`);
 }
-
+else if (i = 6 && playerScore < computerScore){
+    console.log(`Computer won the game, you suck!`)
+}
+else{
+    console.log(`The game is a draw`)
+}

@@ -1,0 +1,6 @@
+function getChoice(playerChoice, computerChoice){
+    playerChoice = prompt(`Select rock, paper or scissors`)
+    console.log(`Player chose ` + playerChoice);
+    computerChoice = math.Ran
+}
+getChoice()
