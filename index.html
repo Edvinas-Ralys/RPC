@@ -5,11 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock paper scissors</title>
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-    
-
-
+    <div class = "game">
+    <div class = "playerSide">
+        <h2 >PLAYER </h2>
+        <div id = "playerSelectBox"></div>
+        <div class = "playerButton">
+        <button id = "rock" onclick = "displaySelection(`ROCK`)">Rock</button>
+        <button class = "paper" onclick = "displaySelection(`PAPER`)">Paper</button>
+        <button class = "scissors" onclick = "displaySelection(`SCISSORS`)">Scissors</button>
+    </div>
+    </div>
+    <div class = "computerSide">
+        <h2>COMPUTER</h2>
+        <div class = "computerSelectBox"></div>
+        <button>Generate</button>
+    </div>
+</div>
+<div class = "playButton">
+<button id = "play">PLAY</button>
+</div>
+<div class = "score">
+    <h2> Game score</h2>
+    <p>Player:</p>
+    <p>Computer:</p>
+    <p>Draws:</p>
+    <p>Games:</p>
+</div>
     <script src="javascript/javascript.js"></script>
 </body>
 </html>
