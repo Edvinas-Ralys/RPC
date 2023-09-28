@@ -1,27 +1,57 @@
 body {
     display: flex;
     flex-direction: column;
+    background-color: rgb(204, 204, 255);
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
     /* border: 2px solid black; */
+    font-family: sans-serif;
+}
+#title{
+    margin-left: auto;
+    margin-right: auto;
+    font-family: sans-serif;
+    margin-bottom: 50px;
 }
 .game {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
-.playerSide, .computerSide{
+#playerSide, #computerSide{
     display:flex;
     /* border: 2px solid purple; */
     flex-direction: column;
-    width: 500px;
+    width: 300px;
     height: auto;
     align-items: center;
+    margin-bottom: 50px;
+    border-radius: 10px;
 }
-.playerSide > button {
+#playerSide > button {
     width: 120px;
     height:auto;
     margin-top: 20px;
 }
-.game > .playerSide > #playerSelectBox {
+.playerButton{
+    /* border: 2px solid black; */
+    height: 30px;   
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+.playerButton > #rock, #paper, #scissors{
+height: 30px;
+width: 70px;
+background-color: rgba(109, 221, 212, 0.267);
+    border-radius: 5px;
+    border: 2px solid rgb(116, 178, 224);
+
+}
+.game > #playerSide > #playerSelectBox {
     width: 200px;
     height: 35px;
     border: 4px solid black;
@@ -32,7 +62,7 @@ body {
 
     
 }
-.game > .computerSide > #computerSelectBox {
+.game > #computerSide > #computerSelectBox {
     width: 200px;
     height: 35px;
     border: 4px solid black;
