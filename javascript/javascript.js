@@ -35,31 +35,31 @@ resetButton.addEventListener(`click`, resetGame)
 //player selection
 
 function rockFunction(){
-    document.getElementById(`playerSelectBox`).innerHTML = `rock`;
-    player = `rock`;
+    document.getElementById(`playerSelectBox`).innerHTML = `Rock`;
+    player = `Rock`;
 };
 function paperFunction(){
-    document.getElementById(`playerSelectBox`).innerHTML = `paper`;
-    player = `paper`;
+    document.getElementById(`playerSelectBox`).innerHTML = `Paper`;
+    player = `Paper`;
 };
 function scissorsFunction (){
-    document.getElementById(`playerSelectBox`).innerHTML = `scissors`;
-    player = `scissors`;
+    document.getElementById(`playerSelectBox`).innerHTML = `Scissors`;
+    player = `Scissors`;
 };
 
 //computer selection
 buttonPlay.disabled = true;
 function generateFunction(){
-    document.getElementById(`computerSelectBox`).innerHTML = `???`;
+    document.getElementById(`computerSelectBox`).innerHTML = `?????`;
     let random = Math.random();
     if(random <=0.3333){
-        computer = `paper`;
+        computer = `Paper`;
     }
     else if(random >=0.6666){
-        computer = `rock`;
+        computer = `Rock`;
     }
     else{
-        computer = `scissors`;
+        computer = `Scissors`;
     }
     console.log(computer);
     buttonPlay.disabled = false;
@@ -73,15 +73,23 @@ let drawGames = document.getElementById(`drawGames`);
 let playerSide = document.getElementById(`playerSide`)
 let computerSide = document.getElementById(`computerSide`);
 
-let draw = `Its a draw!`;
-let playerWin = `Player wins this round!`;
-let compWin = `Computer wins this round!`;
+let draw = `It's a draw!`;
+let playerWin = `Player won this round!`;
+let compWin = `Computer won this round!`;
 let gameReset = ``;
 let i = 0;
 let j = 0;
 let a = 0;
 let b = 0;
-
+let c = 0;
+let d = 0;
+let e = 1;
+let playerWinGame = `Player won the game!`;
+let computerWinGame = `Computer won the game!`;
+let drawGame = `The game is draw!`;
+let counter = document.getElementById(`counter`);
+let roundCount = document.getElementById(`round`);
+roundCount.innerHTML = `Round ` + e;
 
 
 function playGame(){
@@ -99,13 +107,14 @@ function playGame(){
         drawGames.innerHTML = `Draws: ` + ++j;
         draw;
     }
-    else if ((player === `rock` && computer === `scissors`)||
-            (player === `paper` && computer === `rock`)||
-            (player === `scissors` && computer === `paper`)){
+    else if ((player === `Rock` && computer === `Scissors`)||
+            (player === `Paper` && computer === `Rock`)||
+            (player === `Scissors` && computer === `Paper`)){
         console.log(playerWin);
         document.getElementById(`gameResult`).innerHTML = playerWin;
         playerScore.innerHTML = `Player: ` + ++a;
         playerWin;
+        ++c;
     }
     else {
         console.log(compWin)
@@ -113,25 +122,34 @@ function playGame(){
         computerScore.innerHTML += 1;
         computerScore.innerHTML = `Computer: ` + ++b;
         compWin;
+        ++d;
     };
-    if((i === 3) && (a > b)){
-        playerSide.style.cssText = `background-color: rgb(153, 255, 153);`
-        
+
+    if((i % 5 === 0) && (c > d)){
+        playerSide.style.cssText = `background-color: rgb(150, 229, 148); border: 5px solid rgb(88,151,85);`
+        document.getElementById(`gameResult`).innerHTML = playerWinGame; 
     }
-    else if ((i === 3) && (a < b)) {
-        computerSide.style.cssText = `background-color: rgb(153, 255, 153);`
-        
+    else if ((i % 5 === 0) && (c < d)) {
+        computerSide.style.cssText = `background-color: rgb(150, 229, 148); border: 5px solid rgb(88,151,85);`
+        document.getElementById(`gameResult`).innerHTML = computerWinGame;
+    }
+    else if ((i % 5 === 0) && (c === d)){
+        document.getElementById(`gameResult`).innerHTML = drawGame;
     };
-    if(i === 3){
-        gameCount.innerHTML = `Game games played: `
+    if(i % 5 === 0){
+    e = 0;
     };
+    counter.innerHTML = c + ` : ` + d;
 };
 
 
-// displying score
-
-
 function resetGame(){
+    roundCount.innerHTML = `Round ` + ++e;
+    if(i % 5 === 0){
+    c = 0;
+    d = 0;
+    }
+    counter.innerHTML = c + ` : ` + d;
     buttonPlay.disabled = false;
     buttonGenerate.disabled = false;
     buttonPaper.disabled = false;
@@ -141,9 +159,11 @@ function resetGame(){
     document.getElementById(`computerSelectBox`).innerHTML = gameReset;
     document.getElementById(`playerSelectBox`).innerHTML = gameReset;
     buttonPlay.disabled = true;
-    playerSide.style.cssText = `background-color: rgb(204, 204, 255);`;
-    computerSide.style.cssText = `background-color: rgb(204, 204, 255);`;
+    playerSide.style.cssText = `background-color: rgb(25, 31, 87);`;
+    computerSide.style.cssText = `background-color: rgb(25, 31, 87);`;
 };
+
+
 
 
 
